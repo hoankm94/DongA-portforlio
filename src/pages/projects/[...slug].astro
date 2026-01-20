@@ -55,20 +55,22 @@ const { Content } = await entry.render();
   </div>
 
   <!-- Image Gallery Grid -->
-  {entry.data.gallery && (
-    <div class="space-y-8">
-      <h2 class="text-2xl font-semibold text-gray-900">Project Gallery</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {entry.data.gallery.map((imgUrl) => (
-          <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
-            <img 
-              src={imgUrl} 
-              alt="Gallery image" 
-              class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-        ))}
+    {entry.data.gallery && (
+      <div class="space-y-8">
+        <h2 class="text-2xl font-semibold text-gray-900">Project Gallery</h2>
+        
+        <!-- CHANGED: From 'grid' to 'columns' for Pinterest-style layout -->
+        <div class="columns-1 md:columns-2 gap-6 space-y-6">
+          {entry.data.gallery.map((imgUrl) => (
+            <div class="break-inside-avoid rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+              <img 
+                src={imgUrl} 
+                alt="Gallery image" 
+                class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  )}
+    )}
 </Layout>

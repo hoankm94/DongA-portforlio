@@ -1,8 +1,14 @@
 ---
-title: "Sample Product"
-price: "$100"
-image: "https://images.unsplash.com/photo-1592078615290-033ee584e267"
+title: "Tim - Sam Apartment"
+description: "Interior design and construction of Saigon South Residence apartment."
+image: "/timSam1.jpg"
 gallery: 
-  - "https://images.unsplash.com/photo-1592078615290-033ee584e267"
+  - "/timSam1.jpg"
+  - "/timSam2.jpg"
+  - "/timSam3.jpg"
+  - "/timSam4.jpg"
+  - "/timSam5.jpg"
+  - "/timSam6.jpg"
+
 ---
-Content goes here.
+Interior design and construction of Saigon South Residence apartment.

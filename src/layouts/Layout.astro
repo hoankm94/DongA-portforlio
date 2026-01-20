@@ -21,7 +21,17 @@ const { title } = Astro.props;
       <slot />
     </main>
     <footer class="py-10 text-center text-gray-400 text-sm">
-      &copy; {new Date().getFullYear()} DongA Co.
+        <p>&copy; {new Date().getFullYear()} Aunt's Architecture Co.</p>
+  
+  <!-- NEW: Admin Button -->
+        <div class="mt-4">
+            <button 
+                onclick="window.netlifyIdentity.open()" 
+                class="text-xs hover:text-gray-600 transition-colors underline"
+            >
+            Admin Login
+            </button>
+        </div>
     </footer>
     <script is:inline>
     // Initialize the Netlify Identity Widget

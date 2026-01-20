@@ -1,33 +1,56 @@
-# Global CloudCannon Configuration
+# GLOBAL CONFIGURATION
+timezone: Asia/Ho_Chi_Minh
+
+# COLLECTIONS CONFIGURATION
 collections_config:
   projects:
     path: src/content/projects
-    output: true
-    icon: business
     name: Projects
+    icon: business
+    # Tell CloudCannon strictly to look for Markdown files
+    glob: "**/*.md"
+    # When creating a new file, use this extension
+    new_file_extension: "md"
+    # Define the inputs so it doesn't "guess" and fail
     _inputs:
-      # This forces the 'gallery' field to act as a list of images
+      title:
+        type: text
+        label: Project Title
+      description:
+        type: textarea
+        label: Short Description
+      image:
+        type: image
+        label: Main Cover Image
+      tags:
+        type: list
+        label: Tags (Categories)
       gallery:
         type: array
+        label: Image Gallery
         options:
           image: true
-  
+
   products:
     path: src/content/products
-    output: true
-    icon: shopping_cart
     name: Products
+    icon: shopping_cart
+    glob: "**/*.md"
+    new_file_extension: "md"
     _inputs:
+      title:
+        type: text
+      image:
+        type: image
       gallery:
         type: array
         options:
           image: true
 
-# This allows your aunt to upload images to the public folder
+# PATHS
 paths:
   uploads: public/uploads
 
-# Editor configuration
-_inputs:
-  date:
-    instance_value: NOW
+# EDITOR SETTINGS
+_editor:
+  default_path: /

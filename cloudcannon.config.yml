@@ -1,33 +1,34 @@
-# Global CloudCannon Configuration
+paths:
+  uploads: public/uploads
 collections_config:
   projects:
     path: src/content/projects
-    output: true
-    icon: business
     name: Projects
+    icon: add_business
+    disable_url: false
     _inputs:
-      # This forces the 'gallery' field to act as a list of images
       gallery:
         type: array
-        options:
-          image: true
-  
+        options: {}
+        cascade: true
+    disable_add: false
+    disable_add_folder: false
+    disable_file_actions: false
   products:
     path: src/content/products
-    output: true
-    icon: shopping_cart
     name: Products
+    icon: domain_add
+    disable_url: false
     _inputs:
       gallery:
         type: array
-        options:
-          image: true
-
-# This allows your aunt to upload images to the public folder
-paths:
-  uploads: public/uploads
-
-# Editor configuration
+        options: {}
+        cascade: true
+    disable_add: false
+    disable_add_folder: false
+    disable_file_actions: false
 _inputs:
   date:
     instance_value: NOW
+    cascade: true
+timezone: Etc/UTC

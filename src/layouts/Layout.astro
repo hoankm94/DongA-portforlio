@@ -24,15 +24,22 @@ const { title } = Astro.props;
       &copy; {new Date().getFullYear()} DongA Co.
     </footer>
     <script is:inline>
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", user => {
-                if (!user) {
-                    window.netlifyIdentity.on("login", () => {
-                        document.location.href = "/admin/";
-                    });
-                }
+    // Initialize the Netlify Identity Widget
+    if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+        if (!user) {
+            window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
             });
         }
+        });
+
+        // FIX: Check if the user is coming from an invite link
+        // If the URL has 'recovery_token', open the password box immediately.
+        if (document.location.hash.includes("recovery_token")) {
+            window.netlifyIdentity.open();
+        }
+    }
     </script>
   </body>
 </html>

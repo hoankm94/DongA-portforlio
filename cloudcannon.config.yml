@@ -1,0 +1,33 @@
+# Global CloudCannon Configuration
+collections_config:
+  projects:
+    path: src/content/projects
+    output: true
+    icon: business
+    name: Projects
+    _inputs:
+      # This forces the 'gallery' field to act as a list of images
+      gallery:
+        type: array
+        options:
+          image: true
+  
+  products:
+    path: src/content/products
+    output: true
+    icon: shopping_cart
+    name: Products
+    _inputs:
+      gallery:
+        type: array
+        options:
+          image: true
+
+# This allows your aunt to upload images to the public folder
+paths:
+  uploads: public/uploads
+
+# Editor configuration
+_inputs:
+  date:
+    instance_value: NOW

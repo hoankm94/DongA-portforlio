@@ -15,7 +15,7 @@ const { title } = Astro.props;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     
-    
+
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body class="bg-gray-50 text-gray-800 font-sans antialiased">
@@ -25,42 +25,15 @@ const { title } = Astro.props;
     </main>
     
     <footer class="py-10 text-center text-gray-400 text-sm">
-      <p>&copy; {new Date().getFullYear()} Aunt's Architecture Co.</p>
-      <div class="mt-4">
-        <button id="admin-login-btn" class="text-xs hover:text-gray-600 transition-colors underline cursor-pointer">
-          Admin Login
-        </button>
-      </div>
+        <p>&copy; {new Date().getFullYear()} DongA Co.</p>
+        <div class="mt-4">
+            <a 
+            href="/admin/" 
+            class="text-xs hover:text-gray-600 transition-colors underline decoration-dotted"
+            >
+            Admin Panel
+            </a>
+        </div>
     </footer>
-
-    <script is:inline>
-      document.addEventListener('DOMContentLoaded', () => {
-        
-        // Find the button
-        const loginBtn = document.getElementById('admin-login-btn');
-        
-        if (loginBtn) {
-          loginBtn.addEventListener('click', () => {
-            if (window.netlifyIdentity) {
-              window.netlifyIdentity.open();
-            } else {
-              console.error("Netlify Identity not loaded yet.");
-              alert("The security widget is still loading. Please wait a second and try again.");
-            }
-          });
-        }
-
-        // Handle the login redirect
-        if (window.netlifyIdentity) {
-          window.netlifyIdentity.on("init", user => {
-            if (!user) {
-              window.netlifyIdentity.on("login", () => {
-                document.location.href = "/admin/";
-              });
-            }
-          });
-        }
-      });
-    </script>
   </body>
 </html>

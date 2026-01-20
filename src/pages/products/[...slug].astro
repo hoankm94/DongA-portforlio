@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const products = await getCollection('products');
+  return products.map(entry => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout title={entry.data.title}>
+  <div class="mb-8">
+    <a href="/products" class="text-sm text-gray-500 hover:text-black transition-colors">← Back to Products</a>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+    <!-- Left: Main Image -->
+    <div class="rounded-2xl overflow-hidden bg-gray-100">
+      <img src={entry.data.image} alt={entry.data.title} class="w-full h-full object-cover" />
+    </div>
+
+    <!-- Right: Details -->
+    <div class="flex flex-col justify-center">
+      <h1 class="text-4xl font-bold text-gray-900 mb-2">{entry.data.title}</h1>
+      {entry.data.price && <p class="text-2xl text-gray-600 mb-6">{entry.data.price}</p>}
+      <div class="prose text-gray-500 mb-8">
+        <Content />
+      </div>
+      <!-- <button class="bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition w-fit">
+        Contact for Inquiry
+      </button> -->
+    </div>
+  </div>
+
+  <!-- Gallery -->
+  {entry.data.gallery && (
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {entry.data.gallery.map((imgUrl) => (
+        <div class="aspect-square rounded-xl overflow-hidden">
+          <img src={imgUrl} class="w-full h-full object-cover hover:opacity-90 transition" />
+        </div>
+      ))}
+    </div>
+  )}
+</Layout>

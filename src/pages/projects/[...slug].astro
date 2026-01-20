@@ -1,0 +1,74 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map(entry => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+}
+
+// 2. Get the specific project data
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout title={entry.data.title}>
+  <!-- Back Button -->
+  <div class="mb-8">
+    <a href="/projects" class="text-sm text-gray-500 hover:text-black transition-colors">
+      ← Back to Projects
+    </a>
+  </div>
+
+  <!-- Header Section -->
+  <header class="mb-12 max-w-3xl">
+    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{entry.data.title}</h1>
+    <p class="text-xl text-gray-500 leading-relaxed">{entry.data.description}</p>
+    
+    <!-- Tags -->
+    {entry.data.tags && (
+      <div class="flex gap-2 mt-4">
+        {entry.data.tags.map(tag => (
+          <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full uppercase tracking-wider">
+            {tag}
+          </span>
+        ))}
+      </div>
+    )}
+  </header>
+
+  <!-- Main Thumbnail (Hero Image) -->
+  <div class="w-full h-[50vh] md:h-[60vh] rounded-2xl overflow-hidden mb-12 shadow-sm">
+    <img 
+      src={entry.data.image} 
+      alt={entry.data.title} 
+      class="w-full h-full object-cover"
+    />
+  </div>
+
+  <!-- Markdown Content (Text) -->
+  <div class="prose prose-gray prose-lg max-w-none mb-16">
+    <Content />
+  </div>
+
+  <!-- Image Gallery Grid -->
+  {entry.data.gallery && (
+    <div class="space-y-8">
+      <h2 class="text-2xl font-semibold text-gray-900">Project Gallery</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {entry.data.gallery.map((imgUrl) => (
+          <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+            <img 
+              src={imgUrl} 
+              alt="Gallery image" 
+              class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+</Layout>

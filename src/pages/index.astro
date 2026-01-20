@@ -1,16 +1,24 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Home | Architecture Co">
+  <div class="flex flex-col items-center justify-center text-center h-[60vh]">
+    <h1 class="text-5xl md:text-7xl font-bold text-gray-900 tracking-tight mb-6">
+      Design for <span class="text-gray-400">Living.</span>
+    </h1>
+    <p class="text-lg text-gray-600 max-w-2xl mb-10">
+      We create sustainable, minimalistic spaces that breathe. Explore our architecture projects or browse our exclusive furniture collection.
+    </p>
+    
+    <div class="flex gap-4">
+      <!-- Minimalistic Button Style -->
+      <a href="/projects" class="px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl">
+        View Projects
+      </a>
+      <a href="/contact" class="px-8 py-3 bg-white text-gray-900 border border-gray-200 rounded-lg hover:bg-gray-50 transition-all">
+        Contact Us
+      </a>
+    </div>
+  </div>
+</Layout>

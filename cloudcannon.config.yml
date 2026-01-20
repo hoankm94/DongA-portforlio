@@ -1,56 +1,51 @@
-# GLOBAL CONFIGURATION
+# GLOBAL
 timezone: Asia/Ho_Chi_Minh
 
-# COLLECTIONS CONFIGURATION
+# INPUT CONFIGURATION (How the fields look)
+_inputs:
+  date:
+    instance_value: NOW
+  gallery:
+    type: array
+    options:
+      image: true
+  tags:
+    type: list
+  image:
+    type: image
+  description:
+    type: textarea
+
+# COLLECTIONS
 collections_config:
   projects:
     path: src/content/projects
     name: Projects
     icon: business
-    # Tell CloudCannon strictly to look for Markdown files
     glob: "**/*.md"
-    # When creating a new file, use this extension
-    new_file_extension: "md"
-    # Define the inputs so it doesn't "guess" and fail
-    _inputs:
-      title:
-        type: text
-        label: Project Title
-      description:
-        type: textarea
-        label: Short Description
-      image:
-        type: image
-        label: Main Cover Image
-      tags:
-        type: list
-        label: Tags (Categories)
-      gallery:
-        type: array
-        label: Image Gallery
-        options:
-          image: true
+    # FILTER: Hide the schema file from the list so you don't edit it by mistake
+    filter:
+      exclude:
+        - "_schema.md"
+    # SCHEMA: This tells the "Add" button to copy your blueprint
+    schemas:
+      default:
+        path: src/content/projects/_schema.md
+        name: New Project
 
   products:
     path: src/content/products
     name: Products
     icon: shopping_cart
     glob: "**/*.md"
-    new_file_extension: "md"
-    _inputs:
-      title:
-        type: text
-      image:
-        type: image
-      gallery:
-        type: array
-        options:
-          image: true
+    filter:
+      exclude:
+        - "_schema.md"
+    schemas:
+      default:
+        path: src/content/products/_schema.md
+        name: New Product
 
 # PATHS
 paths:
   uploads: public/uploads
-
-# EDITOR SETTINGS
-_editor:
-  default_path: /

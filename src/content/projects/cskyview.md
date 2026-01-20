@@ -1,5 +1,5 @@
 ---
-title: "C-Sky View"
+title: "C-Sky View Interior"
 description: "Interior space design of reception lobby and gym for C-Sky view luxury apartment project."
 image: "/csky1.jpg"
 gallery: 

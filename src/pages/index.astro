@@ -2,23 +2,48 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Home | Architecture Co">
-  <div class="flex flex-col items-center justify-center text-center h-[60vh]">
-    <h1 class="text-5xl md:text-7xl font-bold text-gray-900 tracking-tight mb-6">
-      DONG <span class="text-gray-400">A</span>
-    </h1>
-    <p class="text-lg text-gray-600 max-w-2xl mb-10">
-      Placeholder for Slogan.
-    </p>
+<Layout title="Home | DongA Architecture">
+
+  <div class="relative w-full h-[85vh] flex flex-col items-center justify-center overflow-hidden">
     
-    <div class="flex gap-4">
-      <!-- Minimalistic Button Style -->
-      <a href="/projects" class="px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl">
-        View Projects
-      </a>
-      <a href="/contact" class="px-8 py-3 bg-white text-gray-900 border border-gray-200 rounded-lg hover:bg-gray-50 transition-all">
-        Contact Us
-      </a>
+    <!-- The Grid Background Pattern -->
+    <div class="absolute inset-0 z-0 opacity-[0.4]" 
+         style="background-image: radial-gradient(#a8a29e 1px, transparent 1px); background-size: 32px 32px;">
+    </div>
+    
+    <!-- A subtle gradient overlay to fade the edges -->
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-stone-50 z-0 pointer-events-none"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+      
+      <!-- Main Title: Bigger, tighter tracking, contrasting weights -->
+      <h1 class="text-7xl md:text-9xl font-bold text-gray-900 tracking-tighter mb-6">
+        DONG<span class="font-light text-stone-400">A</span>
+      </h1>
+
+      <p class="text-lg md:text-2xl text-gray-600 mb-10 font-light max-w-2xl mx-auto leading-relaxed">
+        Crafting sustainable, minimalistic spaces that breathe. 
+        <br class="hidden md:block" />
+        Where engineering meets art.
+      </p>
+      
+      <!-- Minimalistic Buttons -->
+      <div class="flex flex-col md:flex-row gap-5 justify-center">
+        
+        <!-- Primary Button: Black -->
+        <a href="/projects" class="group relative px-8 py-3 bg-gray-900 text-white rounded-full overflow-hidden shadow-lg transition-all hover:shadow-xl hover:-translate-y-1">
+          <span class="relative z-10 font-medium">View Projects</span>
+          <!-- Hover Effect -->
+          <div class="absolute inset-0 h-full w-full bg-gray-800 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+        </a>
+
+        <!-- Secondary Button: Outline -->
+        <a href="/contact" class="px-8 py-3 bg-transparent text-gray-900 border border-gray-300 rounded-full hover:bg-white hover:border-gray-400 transition-all hover:shadow-md">
+          Contact Us
+        </a>
+
+      </div>
     </div>
   </div>
 </Layout>

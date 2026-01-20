@@ -1,22 +1,63 @@
-<nav class="w-full py-6 px-8 flex justify-between items-center bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100">
-  
-  <!-- LOGO IMAGE -->
-  <a href="/" class="hover:opacity-80 transition-opacity">
-    <img 
-      src="/logo.jpg" 
-      alt="DongA Architecture" 
-      class="h-12 w-auto object-contain"
-    />
-  </a>
-  
-  <div class="hidden md:flex gap-8 text-sm font-medium text-gray-600">
-    <a href="/projects" class="hover:text-black transition-colors">PROJECTS</a>
-    <a href="/products" class="hover:text-black transition-colors">PRODUCTS</a>
-    <a href="/contact" class="hover:text-black transition-colors">CONTACT</a>
+<nav class="w-full py-6 px-6 md:px-8 bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100">
+  <div class="flex justify-between items-center max-w-7xl mx-auto">
+    
+    <!-- LOGO -->
+    <a href="/" class="hover:opacity-80 transition-opacity z-50">
+      <img 
+        src="/logo.jpg" 
+        alt="DongA Architecture" 
+        class="h-10 md:h-12 w-auto object-contain"
+      />
+    </a>
+    
+    <!-- DESKTOP MENU (Hidden on Mobile) -->
+    <div class="hidden md:flex gap-8 text-sm font-medium text-gray-600">
+      <a href="/projects" class="hover:text-black transition-colors">PROJECTS</a>
+      <a href="/products" class="hover:text-black transition-colors">PRODUCTS</a>
+      <a href="/contact" class="hover:text-black transition-colors">CONTACT</a>
+    </div>
+
+    <!-- MOBILE HAMBURGER BUTTON (Visible only on Mobile) -->
+    <button id="menu-btn" class="md:hidden z-50 p-2 text-gray-800 focus:outline-none">
+      <!-- Icon: Menu (3 lines) -->
+      <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <!-- Icon: Close (X) - Hidden by default -->
+      <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
   </div>
 
-  <!-- Mobile Menu Button (Optional, keeps layout balanced) -->
-  <div class="md:hidden">
-    <a href="/contact" class="text-gray-900 font-bold">MENU</a>
+  <!-- MOBILE MENU OVERLAY (Hidden by default) -->
+  <div id="mobile-menu" class="fixed inset-0 bg-white z-40 flex-col items-center justify-center space-y-8 text-xl hidden md:hidden">
+    <a href="/projects" class="text-gray-800 font-medium hover:text-gray-500">PROJECTS</a>
+    <a href="/products" class="text-gray-800 font-medium hover:text-gray-500">PRODUCTS</a>
+    <a href="/contact" class="text-gray-800 font-medium hover:text-gray-500">CONTACT</a>
   </div>
 </nav>
+
+<script>
+  // Simple script to toggle the mobile menu
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+
+  if (btn && menu && iconOpen && iconClose) {
+    btn.addEventListener('click', () => {
+      // Toggle the menu visibility
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('flex');
+      
+      // Toggle the icons (Menu vs X)
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+      
+      // Prevent scrolling when menu is open
+      document.body.classList.toggle('overflow-hidden');
+    });
+  }
+</script>
